@@ -1,51 +1,210 @@
-import { useState, useEffect } from "react";
-import useAuth from "../../hooks/useAuth"; // example hook
+import { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import axios from "axios";
 
 const Profile = () => {
-    const { user } = useAuth(); // name, email, avatar, etc.
+    const { user } = useContext(AuthContext);
     const [isEditable, setIsEditable] = useState(false);
     const [formData, setFormData] = useState({
         name: "",
+        email: "",
+        avatar: "",
         district: "",
         upazila: "",
         bloodGroup: "",
-        avatar: "",
-        email: ""
     });
+    const [imageFile, setImageFile] = useState(null);
 
     useEffect(() => {
-        // Load user info (possibly from DB or Auth context)
-        setFormData({ ...user });
+        const fetchMongoUser = async () => {
+            if (user?.email) {
+                try {
+                    const res = await axios.get(`http://localhost:5000/users/${user.email}`);
+                    const dbUser = res.data;
+                    setFormData({
+                        name: dbUser.name || "",
+                        email: dbUser.email || "",
+                        avatar: dbUser.avatar || "",
+                        district: dbUser.district || "",
+                        upazila: dbUser.upazila || "",
+                        bloodGroup: dbUser.bloodGroup || "",
+                    });
+                } catch (err) {
+                    console.error("Failed to load user from DB", err);
+                }
+            }
+        };
+
+        fetchMongoUser();
     }, [user]);
 
+
     const handleChange = (e) => {
-        setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleSave = () => {
-        // API call to update user data here
-        alert("Profile updated successfully!");
-        setIsEditable(false);
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        setImageFile(file);
     };
+
+    // const handleSave = async () => {
+    //     try {
+    //         let avatarUrl = formData.avatar;
+
+    //         // 1. Upload image if changed
+    //         if (imageFile) {
+    //             const imgBBKey = import.meta.env.VITE_IMGBB_API_KEY;
+    //             const imageData = new FormData();
+    //             imageData.append("image", imageFile);
+
+    //             const imgRes = await axios.post(`https://api.imgbb.com/1/upload?key=${imgBBKey}`, imageData);
+    //             avatarUrl = imgRes.data.data.url;
+    //         }
+
+    //         // 2. Update backend
+    //         const updatedUser = { ...formData, avatar: avatarUrl };
+    //         await axios.patch(`http://localhost:5000/users/${user._id}`, updatedUser);
+
+    //         alert("Profile updated successfully!");
+    //         setIsEditable(false);
+    //     } catch (err) {
+    //         console.error("Update failed:", err);
+    //         alert("Profile update failed!");
+    //     }
+    // };
+
+
+    const handleSave = async () => {
+        try {
+            let avatarUrl = formData.avatar;
+
+            // 1. Upload image if changed
+            if (imageFile) {
+                const imgBBKey = import.meta.env.VITE_IMGBB_API_KEY;
+                const imageData = new FormData();
+                imageData.append("image", imageFile);
+
+                const imgRes = await axios.post(`https://api.imgbb.com/1/upload?key=${imgBBKey}`, imageData);
+                avatarUrl = imgRes.data.data.url;
+            }
+
+            // 2. Update backend with email in URL
+            const updatedUser = { ...formData, avatar: avatarUrl };
+            await axios.patch(`http://localhost:5000/users/${formData.email}`, updatedUser);
+
+            alert("Profile updated successfully!");
+            setIsEditable(false);
+        } catch (err) {
+            console.error("Update failed:", err);
+            alert("Profile update failed!");
+        }
+    };
+
+
 
     return (
-        <div className="max-w-xl mx-auto bg-white p-6 shadow rounded">
-            <div className="flex justify-between mb-4">
-                <h2 className="text-xl font-semibold text-red-700">Your Profile</h2>
+        <div className="max-w-2xl mx-auto bg-white border border-gray-200 p-6 rounded-lg shadow-md">
+            <div className="flex justify-between items-center mb-6">
+                <h2 className="text-3xl font-bold text-red-600">My Profile</h2>
                 {isEditable ? (
-                    <button onClick={handleSave} className="bg-green-600 text-white px-4 py-1 rounded">Save</button>
+                    <button
+                        onClick={handleSave}
+                        className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md font-semibold"
+                    >
+                        Save
+                    </button>
                 ) : (
-                    <button onClick={() => setIsEditable(true)} className="bg-red-600 text-white px-4 py-1 rounded">Edit</button>
+                    <button
+                        onClick={() => setIsEditable(true)}
+                        className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md font-semibold"
+                    >
+                        Edit
+                    </button>
                 )}
             </div>
 
-            <form className="space-y-4">
-                <input name="name" value={formData.name} onChange={handleChange} disabled={!isEditable} className="w-full border p-2 rounded" />
-                <input name="email" value={formData.email} disabled className="w-full border p-2 rounded bg-gray-100 text-gray-500" />
-                <input name="district" value={formData.district} onChange={handleChange} disabled={!isEditable} className="w-full border p-2 rounded" />
-                <input name="upazila" value={formData.upazila} onChange={handleChange} disabled={!isEditable} className="w-full border p-2 rounded" />
-                <input name="bloodGroup" value={formData.bloodGroup} onChange={handleChange} disabled={!isEditable} className="w-full border p-2 rounded" />
-                <input name="avatar" value={formData.avatar} onChange={handleChange} disabled={!isEditable} className="w-full border p-2 rounded" />
+            <div className="flex justify-center mb-4">
+                <img
+                    src={formData.avatar || "https://i.ibb.co/ZYW3VTp/blood-drop.png"}
+                    alt="avatar"
+                    className="w-32 h-32 object-cover rounded-full border-4 border-red-500"
+                />
+            </div>
+
+            <form className="space-y-5">
+                <div>
+                    <label className="block text-gray-700 font-medium mb-1">Name</label>
+                    <input
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        disabled={!isEditable}
+                        className="w-full p-2 rounded border border-gray-300 disabled:bg-gray-100"
+                    />
+                </div>
+
+                <div>
+                    <label className="block text-gray-700 font-medium mb-1">Email (Not Editable)</label>
+                    <input
+                        name="email"
+                        value={formData.email}
+                        disabled
+                        className="w-full p-2 rounded border border-gray-300 bg-gray-100 text-gray-500"
+                    />
+                </div>
+
+                {/* Avatar Upload */}
+                {isEditable && (
+                    <div>
+                        <label className="block text-gray-700 font-medium mb-1">Upload New Avatar</label>
+                        <input type="file" accept="image/*" onChange={handleImageChange} />
+                    </div>
+                )}
+
+                <div>
+                    <label className="block text-gray-700 font-medium mb-1">District</label>
+                    <input
+                        name="district"
+                        value={formData.district}
+                        onChange={handleChange}
+                        disabled={!isEditable}
+                        className="w-full p-2 rounded border border-gray-300 disabled:bg-gray-100"
+                    />
+                </div>
+
+                <div>
+                    <label className="block text-gray-700 font-medium mb-1">Upazila</label>
+                    <input
+                        name="upazila"
+                        value={formData.upazila}
+                        onChange={handleChange}
+                        disabled={!isEditable}
+                        className="w-full p-2 rounded border border-gray-300 disabled:bg-gray-100"
+                    />
+                </div>
+
+                <div>
+                    <label className="block text-gray-700 font-medium mb-1">Blood Group</label>
+                    <select
+                        name="bloodGroup"
+                        value={formData.bloodGroup}
+                        onChange={handleChange}
+                        disabled={!isEditable}
+                        className="w-full p-2 rounded border border-gray-300 disabled:bg-gray-100"
+                    >
+                        <option value="">Select</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                </div>
             </form>
         </div>
     );
