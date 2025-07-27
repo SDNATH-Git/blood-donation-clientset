@@ -39,11 +39,11 @@ const Featured = () => {
             {/* Top Donors */}
             <div>
                 <h3 className="text-2xl font-semibold mb-6 text-red-700">Top Donors</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 ">
                     {featuredDonors.map(({ id, name, location, bloodGroup, donations }) => (
                         <div
                             key={id}
-                            className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition"
+                            className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition border border-red-200"
                         >
                             <h4 className="text-xl font-bold text-gray-900 mb-1">{name}</h4>
                             <p className="text-gray-600 mb-1">Location: {location}</p>
