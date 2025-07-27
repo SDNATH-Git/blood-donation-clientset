@@ -1,6 +1,6 @@
 
 import React, { useState, useContext, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaBars, FaTimes, FaUserCircle } from "react-icons/fa";
 import Logo from "../assets/BloodLogo.png";
 import { AuthContext } from "../Provider/AuthProvider";
@@ -66,8 +66,9 @@ const Navbar = () => {
             <div className="container mx-auto px-4 flex items-center justify-between ">
                 {/* Logo */}
                 <div className="flex items-center">
-                    <img className="w-36 py-1" src={Logo} alt="Logo" />
-
+                    <Link to="/">
+                        <img className="w-36 py-1 cursor-pointer" src={Logo} alt="Logo" />
+                    </Link>
                 </div>
 
                 {/* Desktop Nav */}
