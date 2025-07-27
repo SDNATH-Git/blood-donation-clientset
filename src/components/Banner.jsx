@@ -5,7 +5,6 @@ import bloodAnimation from "../assets/BloodDonation.json";
 
 const Banner = () => {
     return (
-        // <div className="bg-gradient-to-r from-red-100 via-red-200 to-red-50 flex flex-col-reverse lg:flex-row items-center justify-between p-6 lg:p-16 gap-10">
         <div className="bg-gradient-to-b from-red-100 via-red-200 to-white flex flex-col-reverse lg:flex-row items-center justify-between p-6 lg:p-16 gap-10">
 
             {/* Left: Text and Buttons */}
