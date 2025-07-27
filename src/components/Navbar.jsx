@@ -98,6 +98,16 @@ const Navbar = () => {
                                         Logout
                                         <span className="absolute bottom-0 left-0 w-0 h-1 bg-yellow-400 transition-all duration-300 hover:w-full"></span>
                                     </button>
+                                    {/* Dashboard btn */}
+                                    <Link to="/dashboard">
+                                        <button
+                                            className="w-full mt-2 py-2 px-4 bg-red-600 text-white rounded relative overflow-hidden hover:bg-red-700 transition"
+                                        >
+                                            Dashboard
+                                            <span className="absolute bottom-0 left-0 w-0 h-1 bg-yellow-400 transition-all duration-300 hover:w-full"></span>
+                                        </button>
+                                    </Link>
+
                                 </div>
                             )}
                         </div>
@@ -149,6 +159,17 @@ const Navbar = () => {
                                 >
                                     Logout
                                 </button>
+
+                                {/* Dashboard btn */}
+                                <Link to="/dashboard">
+                                    <button
+                                        className="w-full mt-2 py-2 px-4 bg-red-600 text-white rounded relative overflow-hidden hover:bg-red-700 transition"
+                                    >
+                                        Dashboard
+                                        <span className="absolute bottom-0 left-0 w-0 h-1 bg-yellow-400 transition-all duration-300 hover:w-full"></span>
+                                    </button>
+                                </Link>
+
                             </div>
                         ) : (
                             <>

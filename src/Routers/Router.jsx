@@ -10,6 +10,8 @@ import DonationRequestDetails from "../Pages/NavbarPage/DonationRequestDetails";
 import PrivateRoute from "../Provider/PrivateRoute";
 import Blog from "../Pages/NavbarPage/Blog";
 import Funding from "../Pages/NavbarPage/Funding";
+import DashboardLayout from "../Layout/DashboardLayout";
+import Profile from "../Pages/DashboardPage/Profile";
 
 const router = createBrowserRouter([
     {
@@ -59,6 +61,20 @@ const router = createBrowserRouter([
             },
         ],
     },
+
+    {
+        path: "/dashboard",
+        element: (
+            <PrivateRoute>
+                <DashboardLayout />
+            </PrivateRoute>
+        ),
+        children: [
+            { path: "profile", element: <Profile /> },
+            // ... other routes
+        ],
+    }
+
 ]);
 
 export default router;
