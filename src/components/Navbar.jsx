@@ -91,22 +91,23 @@ const Navbar = () => {
                             {isDropdownOpen && (
                                 <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded z-20 p-4 text-gray-800">
                                     {/* <div className="text-sm mb-2 font-medium">{user.displayName}</div> */}
-                                    <button
-                                        onClick={handleLogout}
-                                        className="w-full py-2 px-4 bg-red-600 text-white rounded relative overflow-hidden hover:bg-red-700 transition"
-                                    >
-                                        Logout
-                                        <span className="absolute bottom-0 left-0 w-0 h-1 bg-yellow-400 transition-all duration-300 hover:w-full"></span>
-                                    </button>
+
                                     {/* Dashboard btn */}
                                     <Link to="/dashboard">
                                         <button
-                                            className="w-full mt-2 py-2 px-4 bg-red-600 text-white rounded relative overflow-hidden hover:bg-red-700 transition"
+                                            className="w-full  py-2 px-4 bg-red-600 text-white rounded relative overflow-hidden hover:bg-red-700 transition"
                                         >
                                             Dashboard
                                             <span className="absolute bottom-0 left-0 w-0 h-1 bg-yellow-400 transition-all duration-300 hover:w-full"></span>
                                         </button>
                                     </Link>
+                                    <button
+                                        onClick={handleLogout}
+                                        className="w-full mt-3 py-2 px-4 bg-gray-600 text-white rounded relative overflow-hidden hover:bg-gray-700 transition"
+                                    >
+                                        Logout
+                                        <span className="absolute bottom-0 left-0 w-0 h-1 bg-yellow-400 transition-all duration-300 hover:w-full"></span>
+                                    </button>
 
                                 </div>
                             )}
@@ -138,41 +139,44 @@ const Navbar = () => {
 
             {/* Mobile/Tablet Menu Drawer */}
             {isMenuOpen && (
-                <div className="lg:hidden bg-white px-4 pb-4 shadow-md">
+                <div className="lg:hidden bg-white px-4 pb-4 shadow-md z-50">
                     <div className="flex flex-col space-y-2 text-base">
                         {renderNavLinks(() => setIsMenuOpen(false))}
                     </div>
-                    <div className="mt-4 space-y-2">
+
+                    <div className="mt-4 border-t pt-4 space-y-2">
                         {user ? (
-                            <div className="flex flex-col items-start gap-3">
+                            <div className="flex flex-col gap-3">
                                 <div className="flex items-center gap-3">
                                     <img
                                         src={user.photoURL || "https://i.ibb.co/ZJcYB2g/default-user.png"}
                                         alt="User"
-                                        className="w-10 h-10 rounded-full border-2 border-orange-600"
+                                        className="w-10 h-10 rounded-full border-2 border-red-600"
                                     />
-                                    {/* <span className="font-semibold">{user.displayName || "Anonymous"}</span> */}
+                                    {/* <div>
+                                        <p className="font-semibold text-gray-800">{user.displayName || "Anonymous"}</p>
+                                        <p className="text-sm text-gray-500">{user.email}</p>
+                                    </div> */}
                                 </div>
-                                <button
-                                    onClick={handleLogout}
-                                    className="w-full py-2 px-4 bg-red-600 text-white rounded hover:bg-red-700 transition"
-                                >
-                                    Logout
-                                </button>
 
-                                {/* Dashboard btn */}
-                                <Link to="/dashboard">
-                                    <button
-                                        className="w-full mt-2 py-2 px-4 bg-red-600 text-white rounded relative overflow-hidden hover:bg-red-700 transition"
-                                    >
+                                <Link to="/dashboard" onClick={() => setIsMenuOpen(false)}>
+                                    <button className="w-full py-2 px-4 bg-gradient-to-r from-red-500 to-red-700 text-white rounded hover:opacity-90 transition">
                                         Dashboard
-                                        <span className="absolute bottom-0 left-0 w-0 h-1 bg-yellow-400 transition-all duration-300 hover:w-full"></span>
                                     </button>
                                 </Link>
 
+                                <button
+                                    onClick={() => {
+                                        handleLogout();
+                                        setIsMenuOpen(false);
+                                    }}
+                                    className="w-full py-2 px-4 bg-gray-700 text-white rounded hover:bg-gray-800 transition"
+                                >
+                                    Logout
+                                </button>
                             </div>
                         ) : (
-                            <>
+                            <div className="flex flex-col gap-2">
                                 <NavLink to="/login" onClick={() => setIsMenuOpen(false)}>
                                     <button className="w-full py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition">
                                         Login
@@ -180,14 +184,17 @@ const Navbar = () => {
                                 </NavLink>
                                 <NavLink to="/register" onClick={() => setIsMenuOpen(false)}>
                                     <button className="w-full py-2 bg-red-600 text-white rounded hover:bg-red-700 transition">
-                                        SignUp
+                                        Register
                                     </button>
                                 </NavLink>
-                            </>
+                            </div>
                         )}
                     </div>
                 </div>
             )}
+
+
+
         </header>
     );
 };

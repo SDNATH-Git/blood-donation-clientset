@@ -5,7 +5,6 @@ import { FiUser, FiLogOut, FiList, FiDroplet, FiSettings } from "react-icons/fi"
 import logo from "../assets/BloodLogo.png";
 import { AuthContext } from "../Provider/AuthProvider";
 
-
 const DashboardLayout = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const navigate = useNavigate();
@@ -25,12 +24,12 @@ const DashboardLayout = () => {
         "text-white font-bold bg-red-600 rounded-lg px-2 py-1 shadow";
 
     return (
-        <div className="flex h-full bg-white relative">
+        <div className="flex h-screen overflow-hidden bg-white">
             {/* Sidebar */}
             <aside
-                className={`w-64 fixed md:static top-0 left-0 z-50 text-black p-6 flex flex-col justify-between transition-transform duration-300 transform h-screen
-        ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0
-        bg-gradient-to-t from-red-300 via-red-100 to-gray-100`}
+                className={`w-64 fixed md:static top-0 left-0 z-50 p-6 flex flex-col justify-between transition-transform duration-300 transform
+                    ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0
+                    bg-gradient-to-t from-red-300 via-red-100 to-white text-black h-screen overflow-y-auto`}
             >
                 <div>
                     <Link to="/">
@@ -92,7 +91,7 @@ const DashboardLayout = () => {
                     </ul>
                 </div>
 
-                {/* Logout button — always visible */}
+                {/* Logout button */}
                 <button
                     onClick={handleLogout}
                     className="mt-6 flex items-center gap-2 text-red-800 hover:text-red-600 transition font-bold"
@@ -103,7 +102,7 @@ const DashboardLayout = () => {
             </aside>
 
             {/* Main Content */}
-            <div className="flex-1 ml-0 md:ml-64 bg-white h-full">
+            <div className="flex-1 flex flex-col overflow-hidden ml-0 md:ml-64">
                 {/* Mobile Top Bar */}
                 <div className="md:hidden bg-red-600 text-white p-4 flex items-center justify-between shadow">
                     <h1 className="text-xl font-bold">Dashboard</h1>
@@ -115,8 +114,8 @@ const DashboardLayout = () => {
                     </button>
                 </div>
 
-                {/* Main Outlet */}
-                <main className="p-6">
+                {/* Main Content Scroll Area */}
+                <main className="flex-1 overflow-y-auto bg-gray-50 p-6">
                     <Outlet />
                 </main>
             </div>

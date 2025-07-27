@@ -12,6 +12,7 @@ import Blog from "../Pages/NavbarPage/Blog";
 import Funding from "../Pages/NavbarPage/Funding";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Profile from "../Pages/DashboardPage/Profile";
+import DonorDashboard from "../Pages/DashboardPage/DonorDashboard";
 
 const router = createBrowserRouter([
     {
@@ -64,16 +65,16 @@ const router = createBrowserRouter([
 
     {
         path: "/dashboard",
-        element: (
-            <PrivateRoute>
-                <DashboardLayout />
-            </PrivateRoute>
-        ),
+        element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
         children: [
+            { index: true, element: <DonorDashboard /> }, // Default dashboard
             { path: "profile", element: <Profile /> },
-            // ... other routes
-        ],
+            // { path: "my-requests", element: <MyDonationRequests /> }, // optional
+            // { path: "donations/:id", element: <RequestDetails /> }, // optional
+            // { path: "donations/edit/:id", element: <EditDonationRequest /> }, // optional
+        ]
     }
+
 
 ]);
 
