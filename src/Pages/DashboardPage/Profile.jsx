@@ -11,7 +11,7 @@ const Profile = () => {
         avatar: "",
         district: "",
         upazila: "",
-        bloodGroup: "",
+        blood: "",
     });
     const [imageFile, setImageFile] = useState(null);
 
@@ -27,7 +27,7 @@ const Profile = () => {
                         avatar: dbUser.avatar || "",
                         district: dbUser.district || "",
                         upazila: dbUser.upazila || "",
-                        bloodGroup: dbUser.bloodGroup || "",
+                        blood: dbUser.blood || "",
                     });
                 } catch (err) {
                     console.error("Failed to load user from DB", err);
@@ -188,8 +188,8 @@ const Profile = () => {
                 <div>
                     <label className="block text-gray-700 font-medium mb-1">Blood Group</label>
                     <select
-                        name="bloodGroup"
-                        value={formData.bloodGroup}
+                        name="blood"
+                        value={formData.blood}
                         onChange={handleChange}
                         disabled={!isEditable}
                         className="w-full p-2 rounded border border-gray-300 disabled:bg-gray-100"
