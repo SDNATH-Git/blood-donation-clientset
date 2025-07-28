@@ -8,26 +8,28 @@ const DonorDashboard = () => {
     const navigate = useNavigate();
 
     const [donationRequests, setDonationRequests] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (user?.email) {
-            // Fetch donor's own donation requests (limit 3, sorted by recent)
             axios
-                .get(`http://localhost:5000/donations?donorEmail=${user.email}&limit=3&sort=desc`)
+                .get(`http://localhost:5000/requests?email=${user.email}`)
                 .then((res) => {
-                    setDonationRequests(res.data);
+                    setDonationRequests(res.data || []);
+                    setLoading(false);
                 })
-                .catch((err) => console.error("Failed to fetch donations", err));
+                .catch((err) => {
+                    console.error("Failed to fetch donations", err);
+                    setLoading(false);
+                });
         }
     }, [user]);
 
     const handleStatusChange = async (id, newStatus) => {
         try {
-            await axios.patch(`http://localhost:5000/donations/${id}`, { status: newStatus });
+            await axios.patch(`http://localhost:5000/requests/${id}`, { status: newStatus });
             setDonationRequests((prev) =>
-                prev.map((req) =>
-                    req._id === id ? { ...req, status: newStatus } : req
-                )
+                prev.map((req) => (req._id === id ? { ...req, status: newStatus } : req))
             );
             alert("Status updated");
         } catch (err) {
@@ -36,11 +38,11 @@ const DonorDashboard = () => {
     };
 
     const handleDelete = async (id) => {
-        const confirm = window.confirm("Are you sure you want to delete this request?");
-        if (!confirm) return;
+        const confirmDelete = window.confirm("Are you sure you want to delete this request?");
+        if (!confirmDelete) return;
 
         try {
-            await axios.delete(`http://localhost:5000/donations/${id}`);
+            await axios.delete(`http://localhost:5000/requests/${id}`);
             setDonationRequests((prev) => prev.filter((req) => req._id !== id));
             alert("Deleted successfully");
         } catch (err) {
@@ -49,14 +51,16 @@ const DonorDashboard = () => {
     };
 
     if (!user) {
-        return <div>Loading...</div>;
+        return <div>Loading user info...</div>;
+    }
+
+    if (loading) {
+        return <div>Loading donation requests...</div>;
     }
 
     return (
         <div className="max-w-5xl mx-auto p-6 bg-white rounded shadow">
-            <h1 className="text-3xl font-bold mb-6 text-red-700">
-                Welcome, {user.name}
-            </h1>
+            <h1 className="text-3xl font-bold mb-6 text-red-700">Welcome, {user.name}</h1>
 
             {donationRequests.length > 0 ? (
                 <>
@@ -77,7 +81,9 @@ const DonorDashboard = () => {
                             {donationRequests.map((req) => (
                                 <tr key={req._id} className="text-center border border-gray-300">
                                     <td className="border p-2">{req.recipientName}</td>
-                                    <td className="border p-2">{req.recipientDistrict}, {req.recipientUpazila}</td>
+                                    <td className="border p-2">
+                                        {req.recipientDistrict}, {req.recipientUpazila}
+                                    </td>
                                     <td className="border p-2">{req.donationDate}</td>
                                     <td className="border p-2">{req.donationTime}</td>
                                     <td className="border p-2">{req.bloodGroup}</td>
@@ -92,8 +98,10 @@ const DonorDashboard = () => {
                                     </td>
                                     <td className="border p-2 space-x-2">
                                         <button
-                                            onClick={() => navigate(`/donations/edit/${req._id}`)}
-                                            className={`px-2 py-1 rounded text-white ${req.status === "inprogress" ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-400 cursor-not-allowed"
+                                            onClick={() => navigate(`/requests/edit/${req._id}`)}
+                                            className={`px-2 py-1 rounded text-white ${req.status === "inprogress"
+                                                ? "bg-blue-600 hover:bg-blue-700"
+                                                : "bg-gray-400 cursor-not-allowed"
                                                 }`}
                                             disabled={req.status !== "inprogress"}
                                         >
@@ -108,7 +116,7 @@ const DonorDashboard = () => {
                                         </button>
 
                                         <button
-                                            onClick={() => navigate(`/donations/view/${req._id}`)}
+                                            onClick={() => navigate(`/requests/view/${req._id}`)}
                                             className="px-2 py-1 rounded bg-green-600 hover:bg-green-700 text-white"
                                         >
                                             View
@@ -138,7 +146,7 @@ const DonorDashboard = () => {
 
                     <div className="mt-6 flex justify-end">
                         <button
-                            onClick={() => navigate("/donations/my-requests")}
+                            onClick={() => navigate("/requests/my-requests")}
                             className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded font-semibold"
                         >
                             View My All Requests
