@@ -15,6 +15,8 @@ import Profile from "../Pages/DashboardPage/Profile";
 import DonorDashboard from "../Pages/DashboardPage/DonorDashboard";
 import MyDonationRequests from "../Pages/DashboardPage/MyDonationRequests";
 import CreateDonationRequest from "../Pages/DashboardPage/CreateDonationRequest";
+import EditRequest from "../Pages/DashboardPage/EditRequest";
+import ViewRequest from "../Pages/DashboardPage/ViewRequest";
 
 const router = createBrowserRouter([
     {
@@ -65,6 +67,18 @@ const router = createBrowserRouter([
         ],
     },
 
+    // {
+    //     path: "/dashboard",
+    //     element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
+    //     children: [
+    //         { index: true, element: <DonorDashboard /> }, // Default dashboard
+    //         { path: "profile", element: <Profile /> },
+    //         { path: "my-donation-requests", element: <MyDonationRequests /> },
+    //         { path: "create-donation-request", element: <CreateDonationRequest /> },
+
+    //     ]
+    // }
+    
     {
         path: "/dashboard",
         element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
@@ -73,11 +87,11 @@ const router = createBrowserRouter([
             { path: "profile", element: <Profile /> },
             { path: "my-donation-requests", element: <MyDonationRequests /> },
             { path: "create-donation-request", element: <CreateDonationRequest /> },
-            // { path: "my-requests", element: <MyDonationRequests /> }, // optional
-            // { path: "donations/:id", element: <RequestDetails /> }, // optional
-            // { path: "donations/edit/:id", element: <EditDonationRequest /> }, // optional
-        ]
+            { path: "requests/edit/:id", element: <EditRequest /> },
+            { path: "requests/:id", element: <ViewRequest /> },
+        ],
     }
+
 
 
 ]);
