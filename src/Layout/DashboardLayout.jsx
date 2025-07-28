@@ -51,7 +51,7 @@ const DashboardLayout = () => {
                         </li>
                         <li>
                             <NavLink
-                                to="/dashboard/requests"
+                                to="/dashboard/my-donation-requests"
                                 className={({ isActive }) =>
                                     `flex items-center gap-2 px-2 py-1 hover:text-red-700 transition ${isActive ? activeClass : "text-gray-700"
                                     }`
@@ -59,12 +59,12 @@ const DashboardLayout = () => {
                                 onClick={() => setSidebarOpen(false)}
                             >
                                 <FiList size={20} />
-                                My Requests
+                                My Donation Requests
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
-                                to="/dashboard/donations"
+                                to="/dashboard/create-donation-request"
                                 className={({ isActive }) =>
                                     `flex items-center gap-2 px-2 py-1 hover:text-red-700 transition ${isActive ? activeClass : "text-gray-700"
                                     }`
@@ -72,7 +72,7 @@ const DashboardLayout = () => {
                                 onClick={() => setSidebarOpen(false)}
                             >
                                 <FiDroplet size={20} />
-                                My Donations
+                                Create Donation Request
                             </NavLink>
                         </li>
                         <li>

@@ -13,6 +13,8 @@ import Funding from "../Pages/NavbarPage/Funding";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Profile from "../Pages/DashboardPage/Profile";
 import DonorDashboard from "../Pages/DashboardPage/DonorDashboard";
+import MyDonationRequests from "../Pages/DashboardPage/MyDonationRequests";
+import CreateDonationRequest from "../Pages/DashboardPage/CreateDonationRequest";
 
 const router = createBrowserRouter([
     {
@@ -69,6 +71,8 @@ const router = createBrowserRouter([
         children: [
             { index: true, element: <DonorDashboard /> }, // Default dashboard
             { path: "profile", element: <Profile /> },
+            { path: "my-donation-requests", element: <MyDonationRequests /> },
+            { path: "create-donation-request", element: <CreateDonationRequest /> },
             // { path: "my-requests", element: <MyDonationRequests /> }, // optional
             // { path: "donations/:id", element: <RequestDetails /> }, // optional
             // { path: "donations/edit/:id", element: <EditDonationRequest /> }, // optional
