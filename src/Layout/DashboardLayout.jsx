@@ -24,12 +24,12 @@ const DashboardLayout = () => {
         "text-white font-bold bg-red-600 rounded-lg px-2 py-1 shadow";
 
     return (
-        <div className="flex h-screen overflow-hidden bg-white">
+        <div className="flex h-screen bg-red-400 overflow-hidden">
             {/* Sidebar */}
             <aside
                 className={`w-64 fixed md:static top-0 left-0 z-50 p-6 flex flex-col justify-between transition-transform duration-300 transform
-                    ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0
-                    bg-gradient-to-t from-red-300 via-red-100 to-white text-black h-screen overflow-y-auto`}
+            ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0
+            bg-gradient-to-t from-red-300 via-red-100 to-white text-black h-full overflow-y-auto`}
             >
                 <div>
                     <Link to="/">
@@ -102,7 +102,7 @@ const DashboardLayout = () => {
             </aside>
 
             {/* Main Content */}
-            <div className="flex-1 flex flex-col overflow-hidden ml-0 md:ml-64">
+            <div className="flex-1 flex flex-col  overflow-hidden">
                 {/* Mobile Top Bar */}
                 <div className="md:hidden bg-red-600 text-white p-4 flex items-center justify-between shadow">
                     <h1 className="text-xl font-bold">Dashboard</h1>
@@ -114,7 +114,7 @@ const DashboardLayout = () => {
                     </button>
                 </div>
 
-                {/* Main Content Scroll Area */}
+                {/* Scrollable content area */}
                 <main className="flex-1 overflow-y-auto bg-gray-50 p-6">
                     <Outlet />
                 </main>
