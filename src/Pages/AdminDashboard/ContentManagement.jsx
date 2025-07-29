@@ -141,6 +141,17 @@ const ContentManagement = () => {
                                     </button>
                                 )}
 
+                                {/* Edit button - Admin & Volunteer both can edit */}
+                                {(userRole === "admin" || userRole === "volunteer") && (
+                                    <button
+                                        onClick={() => navigate(`/dashboard/content-management/edit/${blog._id}`)}
+                                        className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition"
+                                    >
+                                        Edit
+                                    </button>
+                                )}
+
+
                                 {/* Only Admin can delete */}
                                 {userRole === "admin" && (
                                     <button

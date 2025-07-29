@@ -13,18 +13,27 @@ const BlogDetails = () => {
         },
     });
 
-    if (isLoading) return <div className="text-center py-10">Loading blog...</div>;
-    if (error || !blog) return <div className="text-center text-red-600">Blog not found.</div>;
+    if (isLoading) return <div className="text-center py-10 text-lg text-gray-600">Loading blog...</div>;
+    if (error || !blog) return <div className="text-center text-red-600 text-lg">Blog not found.</div>;
 
     return (
-        <div className="max-w-3xl mx-auto px-4 py-10">
-            <img
-                src={blog.thumbnailUrl || "/default-thumbnail.png"}
-                alt={blog.title}
-                className="w-full h-60 object-cover rounded mb-6"
-            />
-            <h1 className="text-3xl font-bold mb-4">{blog.title}</h1>
-            <p className="text-gray-700 whitespace-pre-line">{blog.content}</p>
+        <div className="min-h-screen bg-gradient-to-br from-white via-red-50 to-black px-4 py-10">
+            <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-xl overflow-hidden">
+                {/* Thumbnail */}
+                <img
+                    src={blog.thumbnailUrl || "/default-thumbnail.png"}
+                    alt={blog.title}
+                    className="w-full h-64 object-cover"
+                />
+
+                {/* Content */}
+                <div className="p-6">
+                    <h1 className="text-4xl font-bold text-red-700 mb-4">{blog.title}</h1>
+                    <p className="text-gray-800 leading-relaxed whitespace-pre-line text-lg">
+                        {blog.content}
+                    </p>
+                </div>
+            </div>
         </div>
     );
 };

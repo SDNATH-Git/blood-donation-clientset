@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
-// import error from "../../assets/error.json";
 import error from "../assets/error.json"
 
 const Error = () => {

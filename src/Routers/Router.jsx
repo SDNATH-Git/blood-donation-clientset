@@ -24,6 +24,7 @@ import ContentManagement from "../Pages/AdminDashboard/ContentManagement.JSX";
 import AddBlog from "../Pages/AdminDashboard/AddBlog";
 import VolunteerRequests from "../Pages/VolunteerDashboard/VolunteerRequests";
 import BlogDetails from "../Pages/NavbarPage/BlogDetails";
+import EditBlog from "../Pages/AdminDashboard/EditBlog";
 
 
 const router = createBrowserRouter([
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
                 element: <BlogDetails />,
             },
             {
-                path: "/requestDetails",
+                path: "/donation-details/:id",
                 element: (
                     <PrivateRoute>
                         <DonationRequestDetails />
@@ -79,6 +80,8 @@ const router = createBrowserRouter([
         ],
     },
 
+    // ‍Sider var
+
     {
         path: "/dashboard",
         element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
@@ -97,6 +100,7 @@ const router = createBrowserRouter([
             { path: "all-users", element: <AllUsers /> },
             { path: "all-blood-donation-request", element: <AllBloodDonationRequests /> },
             { path: "content-management", element: <ContentManagement /> },
+            { path: "content-management/edit/:id", element: <EditBlog></EditBlog> },
             { path: "content-management/add-blog", element: <AddBlog /> },
 
             { path: "volunteer-requests", element: <VolunteerRequests /> },
