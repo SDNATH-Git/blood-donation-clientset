@@ -23,6 +23,8 @@ import AllBloodDonationRequests from "../Pages/AdminDashboard/AllBloodDonationRe
 import ContentManagement from "../Pages/AdminDashboard/ContentManagement.JSX";
 import AddBlog from "../Pages/AdminDashboard/AddBlog";
 import VolunteerRequests from "../Pages/VolunteerDashboard/VolunteerRequests";
+import BlogDetails from "../Pages/NavbarPage/BlogDetails";
+
 
 const router = createBrowserRouter([
     {
@@ -45,6 +47,10 @@ const router = createBrowserRouter([
             {
                 path: "/blog",
                 element: <Blog></Blog>,
+            },
+            {
+                path: "/blogs/:id",
+                element: <BlogDetails />,
             },
             {
                 path: "/requestDetails",
@@ -79,7 +85,7 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <DynamicDashboardHome />, 
+                element: <DynamicDashboardHome />,
             },
             { path: "profile", element: <Profile /> },
             { path: "my-donation-requests", element: <MyDonationRequests /> },
