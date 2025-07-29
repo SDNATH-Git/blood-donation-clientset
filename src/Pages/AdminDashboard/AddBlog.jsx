@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { JoditEditor } from "jodit-react";
+// import { JoditEditor } from "jodit-react";
+import JoditEditor from "jodit-react";
+
 import { toast } from "react-toastify";
 
 const AddBlog = () => {
@@ -12,8 +14,8 @@ const AddBlog = () => {
     const navigate = useNavigate();
     const token = localStorage.getItem("access-token");
 
-    // ImageBB API key (environment variable recommended)
-    const imgbbApiKey = process.env.REACT_APP_IMGBB_API_KEY;
+    const imgbbApiKey = import.meta.env.VITE_IMGBB_API_KEY;
+
 
     const uploadImage = async (file) => {
         setUploading(true);

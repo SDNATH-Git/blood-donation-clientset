@@ -21,6 +21,7 @@ import DynamicDashboardHome from "../Layout/DynamicDashboardHome";
 import AllUsers from "../Pages/AdminDashboard/AllUsers";
 import AllBloodDonationRequests from "../Pages/AdminDashboard/AllBloodDonationRequests";
 import ContentManagement from "../Pages/AdminDashboard/ContentManagement.JSX";
+import AddBlog from "../Pages/AdminDashboard/AddBlog";
 
 const router = createBrowserRouter([
     {
@@ -101,7 +102,7 @@ const router = createBrowserRouter([
             { path: "all-users", element: <AllUsers /> },
             { path: "all-blood-donation-request", element: <AllBloodDonationRequests /> },
             { path: "content-management", element: <ContentManagement /> },
-            // { path: "content-management/add-blog", element: <AddBlog /> },
+            { path: "content-management/add-blog", element: <AddBlog /> },
         ],
     }
 
