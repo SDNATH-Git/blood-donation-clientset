@@ -4,6 +4,7 @@ import { FaUser, FaHandHoldingHeart, FaTint } from "react-icons/fa";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import DashboardHome from "../DashboardHome";
 
 const AdminDashboard = () => {
     const [token, setToken] = useState("");
@@ -58,10 +59,11 @@ const AdminDashboard = () => {
     const cardStyle = "rounded-2xl p-6 shadow-lg border hover:shadow-xl transition duration-300";
 
     return (
-        <div className="px-4 py-10 max-w-7xl mx-auto">
-            <h2 className="text-4xl font-bold text-center text-red-600 mb-10">🛡️ Admin Dashboard</h2>
+        <div className="px-6 py-10 max-w-7xl mx-auto bg-white rounded-3xl shadow-xs">
+            <DashboardHome></DashboardHome>
+            {/* <h2 className="text-4xl font-bold text-center text-red-600 mb-10">🛡️ Admin Dashboard</h2> */}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
                 {/* Total Users */}
                 <div className={`${cardStyle} bg-gradient-to-r from-red-100 to-red-200`}>
                     <div className="flex items-center justify-between">

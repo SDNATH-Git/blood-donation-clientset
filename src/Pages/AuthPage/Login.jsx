@@ -20,8 +20,9 @@ const Login = () => {
         "w-full px-5 py-3 border border-red-500 text-black bg-white " +
         "placeholder-red-400 text-lg rounded-md focus:outline-none focus:ring-2 focus:ring-red-500";
 
-    const saveToken = async (userEmail) => {
-        // Step 1: get user role
+    // Save token and role in localStorage
+    const saveTokenAndRole = async (userEmail) => {
+        // Step 1: get user role from backend
         const roleRes = await fetch(`http://localhost:5000/users/role/${userEmail}`);
         const roleData = await roleRes.json();
         const userRole = roleData?.role;
@@ -29,6 +30,9 @@ const Login = () => {
         if (!userRole) {
             throw new Error("User role not found");
         }
+
+        // Save role in localStorage
+        localStorage.setItem("role", userRole);
 
         // Step 2: get JWT using email and role
         const res = await fetch("http://localhost:5000/jwt", {
@@ -45,7 +49,6 @@ const Login = () => {
         }
     };
 
-
     const handleLogin = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -58,17 +61,15 @@ const Login = () => {
             const user = result.user;
             setUser(user);
 
-            // IMPORTANT: Detect role dynamically if you want; here I assume donor for example
-            // You may call your API to get user role or store role in user object after login
-            // For demonstration, defaulting to "donor"
-            await saveToken(user.email, "donor");
+            // Save JWT token and role in localStorage
+            await saveTokenAndRole(user.email);
 
             toast.success("Login successful!");
             form.reset();
             setEmail("");
             navigate(from, { replace: true });
         } catch (error) {
-            toast.error(error.message);
+            toast.error(error.message || "Login failed");
         } finally {
             setLoading(false);
         }
@@ -124,7 +125,9 @@ const Login = () => {
 
                         <button
                             type="submit"
-                            className={`w-full py-4 rounded-md text-lg font-medium text-white ${loading ? "bg-red-300 cursor-not-allowed" : "bg-red-600 hover:bg-red-700 transition-colors"
+                            className={`w-full py-4 rounded-md text-lg font-medium text-white ${loading
+                                ? "bg-red-300 cursor-not-allowed"
+                                : "bg-red-600 hover:bg-red-700 transition-colors"
                                 }`}
                             disabled={loading}
                         >
@@ -145,4 +148,5 @@ const Login = () => {
 };
 
 export default Login;
+
 

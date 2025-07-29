@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import DashboardHome from "../DashboardHome";
 
 const DonorDashboard = () => {
     const { user } = useContext(AuthContext);
@@ -60,7 +61,8 @@ const DonorDashboard = () => {
 
     return (
         <div className="max-w-5xl mx-auto p-4 md:p-6 bg-white rounded shadow">
-            <h1 className="text-2xl md:text-3xl font-bold mb-4 text-red-700">Welcome, {user.name}</h1>
+            <DashboardHome></DashboardHome>
+            {/* <h1 className="text-2xl md:text-3xl font-bold mb-4 text-red-700">Welcome, {user.name}</h1> */}
 
             {donationRequests.length > 0 ? (
                 <div className="overflow-x-auto">
@@ -148,7 +150,7 @@ const DonorDashboard = () => {
 
             <div className="mt-6 flex justify-end">
                 <button
-                    onClick={() => navigate("/requests/my-requests")}
+                    onClick={() => navigate("/dashboard/my-donation-requests")}
                     className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded font-semibold"
                 >
                     View My All Requests
