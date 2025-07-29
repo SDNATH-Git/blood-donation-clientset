@@ -18,6 +18,7 @@ import CreateDonationRequest from "../Pages/DashboardPage/CreateDonationRequest"
 import EditRequest from "../Pages/DashboardPage/EditRequest";
 import ViewRequest from "../Pages/DashboardPage/ViewRequest";
 import DynamicDashboardHome from "../Layout/DynamicDashboardHome";
+import AllUsers from "../Pages/AdminDashboard/AllUsers";
 
 const router = createBrowserRouter([
     {
@@ -95,7 +96,7 @@ const router = createBrowserRouter([
             { path: "requests/:id", element: <ViewRequest /> },
 
             // Admin Routes
-            // { path: "all-users", element: <AllUsers /> },
+            { path: "all-users", element: <AllUsers /> },
             // { path: "all-blood-donation-request", element: <AllDonationRequests /> },
             // { path: "content-management", element: <BlogList /> },
             // { path: "content-management/add-blog", element: <AddBlog /> },
