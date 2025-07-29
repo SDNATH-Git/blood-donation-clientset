@@ -252,7 +252,7 @@ const DashboardLayout = () => {
                                 </li>
                                 <li>
                                     <NavLink
-                                        to="/dashboard/all-requests"
+                                        to="/dashboard/all-blood-donation-request"
                                         className={({ isActive }) =>
                                             `flex items-center gap-2 px-2 py-1 hover:text-red-700 transition ${isActive ? activeClass : "text-gray-700"}`
                                         }
@@ -260,6 +260,18 @@ const DashboardLayout = () => {
                                     >
                                         <FiList size={20} />
                                         All Requests
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink
+                                        to="/dashboard/content-management"
+                                        className={({ isActive }) =>
+                                            `flex items-center gap-2 px-2 py-1 hover:text-red-700 transition ${isActive ? activeClass : "text-gray-700"}`
+                                        }
+                                        onClick={() => setSidebarOpen(false)}
+                                    >
+                                        <FiList size={20} />
+                                        Content Management
                                     </NavLink>
                                 </li>
                                 <li>
