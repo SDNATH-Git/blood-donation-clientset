@@ -11,17 +11,18 @@ import PrivateRoute from "../Provider/PrivateRoute";
 import Blog from "../Pages/NavbarPage/Blog";
 import Funding from "../Pages/NavbarPage/Funding";
 import DashboardLayout from "../Layout/DashboardLayout";
-import Profile from "../Pages/DashboardPage/Profile";
-import DonorDashboard from "../Pages/DashboardPage/DonorDashboard";
-import MyDonationRequests from "../Pages/DashboardPage/MyDonationRequests";
-import CreateDonationRequest from "../Pages/DashboardPage/CreateDonationRequest";
-import EditRequest from "../Pages/DashboardPage/EditRequest";
-import ViewRequest from "../Pages/DashboardPage/ViewRequest";
+import Profile from "../Pages/DonarDashboardPage/Profile";
+import DonorDashboard from "../Pages/DonarDashboardPage/DonorDashboard";
+import MyDonationRequests from "../Pages/DonarDashboardPage/MyDonationRequests";
+import CreateDonationRequest from "../Pages/DonarDashboardPage/CreateDonationRequest";
+import EditRequest from "../Pages/DonarDashboardPage/EditRequest";
+import ViewRequest from "../Pages/DonarDashboardPage/ViewRequest";
 import DynamicDashboardHome from "../Layout/DynamicDashboardHome";
 import AllUsers from "../Pages/AdminDashboard/AllUsers";
 import AllBloodDonationRequests from "../Pages/AdminDashboard/AllBloodDonationRequests";
 import ContentManagement from "../Pages/AdminDashboard/ContentManagement.JSX";
 import AddBlog from "../Pages/AdminDashboard/AddBlog";
+import VolunteerRequests from "../Pages/VolunteerDashboard/VolunteerRequests";
 
 const router = createBrowserRouter([
     {
@@ -103,6 +104,8 @@ const router = createBrowserRouter([
             { path: "all-blood-donation-request", element: <AllBloodDonationRequests /> },
             { path: "content-management", element: <ContentManagement /> },
             { path: "content-management/add-blog", element: <AddBlog /> },
+
+            { path: "volunteer-requests", element: <VolunteerRequests /> },
         ],
     }
 
