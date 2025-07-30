@@ -37,7 +37,7 @@ const Banner = () => {
 
             {/* Right: Lottie Animation */}
             <motion.div
-                className="flex-1 w-full max-w-md mx-auto bg-white rounded-xl shadow-lg p-4"
+                className="flex-1  w-full max-w-md mx-auto bg-white rounded-xl shadow-lg p-4"
                 initial={{ x: 100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 1 }}

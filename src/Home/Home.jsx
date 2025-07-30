@@ -5,10 +5,10 @@ import Contact from '../components/Contact';
 
 const Home = () => {
     return (
-        <div>
-            <Banner></Banner>
-            <Featured></Featured>
-            <Contact></Contact>
+        <div >
+            <Banner />
+            <Featured />
+            <Contact />
         </div>
     );
 };
