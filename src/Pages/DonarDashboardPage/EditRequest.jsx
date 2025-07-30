@@ -9,7 +9,7 @@ const EditRequest = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/requests/${id}`)
+        axios.get(`https://blood-donation-serverset.vercel.app/requests/${id}`)
             .then(res => {
                 setRequest(res.data);
                 setLoading(false);
@@ -24,7 +24,7 @@ const EditRequest = () => {
         e.preventDefault();
         try {
             const { _id, ...updateData } = request;  // _id বাদ দিয়ে পাঠানো হচ্ছে
-            await axios.patch(`http://localhost:5000/requests/${id}`, updateData);
+            await axios.patch(`https://blood-donation-serverset.vercel.app/requests/${id}`, updateData);
             alert("Request updated successfully");
             navigate("/dashboard/my-donation-requests");
         } catch (err) {

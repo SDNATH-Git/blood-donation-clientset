@@ -14,7 +14,7 @@ const DonorDashboard = () => {
     useEffect(() => {
         if (user?.email) {
             axios
-                .get(`http://localhost:5000/requests?email=${user.email}`)
+                .get(`https://blood-donation-serverset.vercel.app/requests?email=${user.email}`)
                 .then((res) => {
                     setDonationRequests(res.data || []);
                     setLoading(false);
@@ -28,7 +28,7 @@ const DonorDashboard = () => {
 
     const handleStatusChange = async (id, newStatus) => {
         try {
-            await axios.patch(`http://localhost:5000/requests/${id}`, { status: newStatus });
+            await axios.patch(`https://blood-donation-serverset.vercel.app/requests/${id}`, { status: newStatus });
             setDonationRequests((prev) =>
                 prev.map((req) => (req._id === id ? { ...req, status: newStatus } : req))
             );
@@ -43,7 +43,7 @@ const DonorDashboard = () => {
         if (!confirmDelete) return;
 
         try {
-            await axios.delete(`http://localhost:5000/requests/${id}`);
+            await axios.delete(`https://blood-donation-serverset.vercel.app/requests/${id}`);
             setDonationRequests((prev) => prev.filter((req) => req._id !== id));
             alert("Deleted successfully");
         } catch (err) {

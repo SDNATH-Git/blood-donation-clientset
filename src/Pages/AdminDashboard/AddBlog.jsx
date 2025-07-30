@@ -46,7 +46,7 @@ const AddBlog = () => {
 
         try {
             const res = await axios.post(
-                "http://localhost:5000/blogs",
+                "https://blood-donation-serverset.vercel.app/blogs",
                 {
                     title,
                     content,

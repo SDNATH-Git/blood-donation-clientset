@@ -7,7 +7,7 @@ const DonateModal = ({ requestId, donorName, donorEmail, onClose }) => {
             const token = localStorage.getItem("access-token");
 
             await axios.patch(
-                `http://localhost:5000/donations/start/${requestId}`,
+                `https://blood-donation-serverset.vercel.app/donations/start/${requestId}`,
                 {},
                 {
                     headers: {

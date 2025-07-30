@@ -30,7 +30,7 @@ const AllBloodDonationRequests = () => {
         queryFn: async () => {
             if (!token) return [];
             const axiosSecure = axios.create({
-                baseURL: "http://localhost:5000",
+                baseURL: "https://blood-donation-serverset.vercel.app",
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -50,7 +50,7 @@ const AllBloodDonationRequests = () => {
     const handleStatusChange = async (id, newStatus) => {
         try {
             const axiosSecure = axios.create({
-                baseURL: "http://localhost:5000",
+                baseURL: "https://blood-donation-serverset.vercel.app",
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -73,7 +73,7 @@ const AllBloodDonationRequests = () => {
 
         try {
             const axiosSecure = axios.create({
-                baseURL: "http://localhost:5000",
+                baseURL: "https://blood-donation-serverset.vercel.app",
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

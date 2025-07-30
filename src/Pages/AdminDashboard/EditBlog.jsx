@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const axiosSecure = axios.create({
-    baseURL: "http://localhost:5000",
+    baseURL: "https://blood-donation-serverset.vercel.app",
     headers: { Authorization: `Bearer ${localStorage.getItem("access-token")}` },
 });
 

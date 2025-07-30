@@ -33,6 +33,24 @@ BloodCare is a full-featured web application that connects blood donors with rec
 
 ---
 
-## 📂 Folder Structure
+
+---
+
+## ⚙️ Getting Started Locally
+
+1. Clone the repo  
+   `git clone https://github.com/your-username/bloodcare.git`
+2. Install dependencies  
+   `npm install` (in both `/client` and `/server`)
+3. Create `.env` files for client and server
+4. Run server  
+   `npm run dev` (in `/server`)
+5. Run client  
+   `npm run dev` (in `/client`)
+
+---
+
+> Developed with ❤️ to save lives, one drop at a time.
+
 
 

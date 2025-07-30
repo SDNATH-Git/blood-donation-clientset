@@ -67,7 +67,7 @@
 //     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
 //       if (currentUser?.email) {
 //         try {
-//           const res = await axios.get(`http://localhost:5000/users/${currentUser.email}`);
+//           const res = await axios.get(`https://blood-donation-serverset.vercel.app/users/${currentUser.email}`);
 //           const dbUser = res.data;
 
 //           // ✅ Merge Firebase + DB user info
@@ -184,7 +184,7 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser?.email) {
         try {
-          const res = await axios.get(`http://localhost:5000/users/${currentUser.email}`);
+          const res = await axios.get(`https://blood-donation-serverset.vercel.app/users/${currentUser.email}`);
           const dbUser = res.data;
 
           setUser({

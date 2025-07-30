@@ -11,7 +11,7 @@ const DonationRequests = () => {
     const { data: requests = [], isLoading, error } = useQuery({
         queryKey: ["pendingDonationRequests"],
         queryFn: async () => {
-            const res = await axios.get("http://localhost:5000/donations/pending");
+            const res = await axios.get("https://blood-donation-serverset.vercel.app/donations/pending");
             return res.data;
         },
     });

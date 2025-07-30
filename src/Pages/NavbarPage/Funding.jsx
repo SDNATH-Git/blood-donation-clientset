@@ -16,7 +16,7 @@ const Funding = () => {
     const { data: funds = [], isLoading, refetch } = useQuery({
         queryKey: ["funds"],
         queryFn: async () => {
-            const res = await axios.get("http://localhost:5000/funds");
+            const res = await axios.get("https://blood-donation-serverset.vercel.app/funds");
             return res.data;
         },
     });

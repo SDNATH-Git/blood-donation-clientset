@@ -23,7 +23,7 @@ const Login = () => {
     // Save token and role in localStorage
     const saveTokenAndRole = async (userEmail) => {
         // Step 1: get user role from backend
-        const roleRes = await fetch(`http://localhost:5000/users/role/${userEmail}`);
+        const roleRes = await fetch(`https://blood-donation-serverset.vercel.app/users/role/${userEmail}`);
         const roleData = await roleRes.json();
         const userRole = roleData?.role;
 
@@ -35,7 +35,7 @@ const Login = () => {
         localStorage.setItem("role", userRole);
 
         // Step 2: get JWT using email and role
-        const res = await fetch("http://localhost:5000/jwt", {
+        const res = await fetch("https://blood-donation-serverset.vercel.app/jwt", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email: userEmail, role: userRole }),

@@ -20,7 +20,7 @@ const VolunteerRequests = () => {
     const { data: requests = [], isLoading, error } = useQuery({
         queryKey: ["volunteer-requests"],
         queryFn: async () => {
-            const res = await axios.get("http://localhost:5000/volunteer-requests", {
+            const res = await axios.get("https://blood-donation-serverset.vercel.app/volunteer-requests", {
                 headers: {
                     authorization: `Bearer ${token}`,
                 },

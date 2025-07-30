@@ -55,7 +55,7 @@ const Search = () => {
         e.preventDefault();
         const { bloodGroup, districtId, upazilaId } = formData;
         try {
-            const res = await axios.get("http://localhost:5000/users", {
+            const res = await axios.get("https://blood-donation-serverset.vercel.app/users", {
                 params: { bloodGroup, districtId, upazilaId },
             });
             setDonors(res.data);

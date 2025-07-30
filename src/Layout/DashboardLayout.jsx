@@ -32,7 +32,7 @@ const DashboardLayout = () => {
         const fetchRole = async () => {
             try {
                 const token = localStorage.getItem("access-token");
-                const res = await axios.get(`http://localhost:5000/users/role/${user?.email}`, {
+                const res = await axios.get(`https://blood-donation-serverset.vercel.app/users/role/${user?.email}`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setRole(res.data.role);

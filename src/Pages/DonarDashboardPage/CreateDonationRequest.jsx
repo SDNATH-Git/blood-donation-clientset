@@ -77,7 +77,7 @@ const CreateDonationRequest = () => {
         };
 
         try {
-            await axios.post("http://localhost:5000/requests", newRequest);
+            await axios.post("https://blood-donation-serverset.vercel.app/requests", newRequest);
             alert("Donation request created successfully!");
             navigate("/dashboard/my-donation-requests");
         } catch (err) {

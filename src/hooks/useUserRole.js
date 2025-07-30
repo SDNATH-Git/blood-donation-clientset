@@ -10,7 +10,7 @@ const useUserRole = () => {
     queryKey: ['role', user?.email],
     enabled: !!user?.email,
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/users/role/${user.email}`);
+      const res = await axios.get(`https://blood-donation-serverset.vercel.app/users/role/${user.email}`);
       if (!res.data || !res.data.role) {
         throw new Error("Role not found");
       }

@@ -9,7 +9,7 @@ const Blog = () => {
     const { data: blogs = [], isLoading, error } = useQuery({
         queryKey: ["publishedBlogs"],
         queryFn: async () => {
-            const res = await axios.get("http://localhost:5000/blogs/published");
+            const res = await axios.get("https://blood-donation-serverset.vercel.app/blogs/published");
             return res.data;
         },
     });

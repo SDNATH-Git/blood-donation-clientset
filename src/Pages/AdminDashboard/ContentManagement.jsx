@@ -16,7 +16,7 @@ const ContentManagement = () => {
 
     // axios instance with token
     const axiosSecure = axios.create({
-        baseURL: "http://localhost:5000",
+        baseURL: "https://blood-donation-serverset.vercel.app",
         headers: { Authorization: `Bearer ${token}` },
     });
 

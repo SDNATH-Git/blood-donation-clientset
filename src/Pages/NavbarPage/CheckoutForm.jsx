@@ -29,7 +29,7 @@ const CheckoutForm = ({ user, amount, onPaymentSuccess, onClose }) => {
         }
 
         try {
-            const res = await fetch("http://localhost:5000/funds", {
+            const res = await fetch("https://blood-donation-serverset.vercel.app/funds", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

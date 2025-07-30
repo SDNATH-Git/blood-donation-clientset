@@ -26,7 +26,7 @@ const AllUsers = () => {
         queryFn: async () => {
             if (!token) return [];
             const axiosSecure = axios.create({
-                baseURL: "http://localhost:5000",
+                baseURL: "https://blood-donation-serverset.vercel.app",
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -47,7 +47,7 @@ const AllUsers = () => {
     const handleAction = async (id, action) => {
         try {
             const axiosSecure = axios.create({
-                baseURL: "http://localhost:5000",
+                baseURL: "https://blood-donation-serverset.vercel.app",
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

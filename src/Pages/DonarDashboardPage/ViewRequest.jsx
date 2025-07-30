@@ -9,7 +9,7 @@ const ViewRequest = () => {
 
     useEffect(() => {
         setLoading(true);
-        axios.get(`http://localhost:5000/requests/${id}`)
+        axios.get(`https://blood-donation-serverset.vercel.app/requests/${id}`)
             .then(res => {
                 setRequest(res.data);
                 setLoading(false);

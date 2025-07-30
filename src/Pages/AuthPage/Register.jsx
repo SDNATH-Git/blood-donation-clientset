@@ -47,7 +47,7 @@ const Register = () => {
 
     // ✅ Token fetch and store
     const saveToken = async (userEmail) => {
-        const res = await fetch("http://localhost:5000/jwt", {
+        const res = await fetch("https://blood-donation-serverset.vercel.app/jwt", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email: userEmail, role: "donor" }), // ✅ role পাঠাও
@@ -98,7 +98,7 @@ const Register = () => {
                 setUser(user);
 
                 // Save to MongoDB
-                await axios.post("http://localhost:5000/users", {
+                await axios.post("https://blood-donation-serverset.vercel.app/users", {
                     name,
                     email,
                     avatar,

@@ -19,7 +19,7 @@ const Profile = () => {
         const fetchMongoUser = async () => {
             if (user?.email) {
                 try {
-                    const res = await axios.get(`http://localhost:5000/users/${user.email}`);
+                    const res = await axios.get(`https://blood-donation-serverset.vercel.app/users/${user.email}`);
                     const dbUser = res.data;
                     setFormData({
                         name: dbUser.name || "",
@@ -65,7 +65,7 @@ const Profile = () => {
 
     //         // 2. Update backend
     //         const updatedUser = { ...formData, avatar: avatarUrl };
-    //         await axios.patch(`http://localhost:5000/users/${user._id}`, updatedUser);
+    //         await axios.patch(`https://blood-donation-serverset.vercel.app/users/${user._id}`, updatedUser);
 
     //         alert("Profile updated successfully!");
     //         setIsEditable(false);
@@ -92,7 +92,7 @@ const Profile = () => {
 
             // 2. Update backend with email in URL
             const updatedUser = { ...formData, avatar: avatarUrl };
-            await axios.patch(`http://localhost:5000/users/${formData.email}`, updatedUser);
+            await axios.patch(`https://blood-donation-serverset.vercel.app/users/${formData.email}`, updatedUser);
 
             alert("Profile updated successfully!");
             setIsEditable(false);
