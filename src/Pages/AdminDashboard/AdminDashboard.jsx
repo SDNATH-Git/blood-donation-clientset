@@ -92,10 +92,15 @@ const AdminDashboard = () => {
                         <FaTint className="text-5xl text-blue-600" />
                         <div className="text-right">
                             <h3 className="text-xl font-medium">Total Funds</h3>
-                            <p className="text-4xl font-bold">{funds.length}</p>
+                            <p className="text-3xl font-bold">
+                                ${funds.reduce((total, fund) => total + fund.amount, 0).toFixed(2)}
+                            </p>
                         </div>
                     </div>
                 </div>
+
+
+
             </div>
         </div>
     );

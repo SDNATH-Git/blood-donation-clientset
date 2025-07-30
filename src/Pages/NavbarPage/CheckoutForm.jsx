@@ -42,7 +42,7 @@ const CheckoutForm = ({ user, amount, onPaymentSuccess, onClose }) => {
             });
 
             if (res.ok) {
-                alert("✅ Payment submitted (demo only).");
+                alert("✅ Payment submitted .");
                 if (onPaymentSuccess) onPaymentSuccess();
                 if (onClose) onClose();
             } else {
