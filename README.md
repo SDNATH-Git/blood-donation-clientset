@@ -1,56 +1,85 @@
 # 🩸 BloodCare - Blood Donation Platform
 
-**Live Site:** [https://bloodcare-donation.web.app](https://bloodcare-donation.web.app)  
-**Admin Login:**  
-- **Email:** admin@bloodcare.com  
-- **Password:** Admin@123  
-
-BloodCare is a full-featured web application that connects blood donors with recipients in need. Built with the latest technologies, it ensures fast, secure, and responsive user experiences for admins, donors, and volunteers.
+**Live Site:** [https://blood-donation-e5b2a.web.app/](https://blood-donation-e5b2a.web.app/)
 
 ---
 
-## 🔥 Key Features
-
-- ✅ **User Authentication** – Secure login and registration with role-based access (admin, donor, volunteer).
-- 🧪 **Search Donors by Location** – Filter by district, upazila, and blood group to find the right donor.
-- 📝 **Blood Donation Requests** – Recipients can request blood specifying hospital, date, and blood group.
-- 💳 **Stripe Integration** – Users can donate funds using Stripe (test mode).
-- 📋 **My Requests Page** – Donors can view, update, or cancel their donation requests.
-- 🛡️ **Admin Dashboard** – Admins can view total users, requests, funds, and delete inappropriate data.
-- 🧑‍🤝‍🧑 **Role Management** – Promote users to admin or volunteer (admin-only).
-- 🖼️ **Dynamic UI** – Lottie animations, gradient backgrounds, and smooth Framer Motion transitions.
-- 🔒 **JWT Protected Routes** – Secure API endpoints with token-based authentication.
-- 📈 **Donation Status Tracking** – Donations go through statuses like `pending`, `inprogress`, and `done`.
+## 📋 Project Overview  
+BloodCare is a comprehensive blood donation platform that connects donors with recipients efficiently. It offers role-based access control, location-based donor search, and secure donation request management, delivering a seamless and responsive user experience.
 
 ---
 
-## 🚀 Technologies Used
-
-- **Frontend:** React.js, Tailwind CSS, React Router, Framer Motion, Axios, React Toastify  
-- **Backend:** Express.js, MongoDB, Stripe API, JWT  
-- **Authentication:** Firebase Auth  
-- **Deployment:** Firebase Hosting (Client), Vercel (Server)
+## 📷 Screenshot  
+![BloodCare Screenshot](assets/bloodWeb.png)  
+*(Add a clean screenshot of your app inside the `assets` folder to showcase the UI)*
 
 ---
 
+## 🛠️ Main Technologies Used  
+- React.js  
+- Tailwind CSS  
+- React Router  
+- Framer Motion  
+- Axios  
+- React Toastify  
+- Express.js  
+- MongoDB  
+- Stripe API  
+- JWT Authentication  
+- Firebase Auth  
+- Firebase Hosting & Vercel Deployment  
 
 ---
 
-## ⚙️ Getting Started Locally
-
-1. Clone the repo  
-   `git clone https://github.com/your-username/bloodcare.git`
-2. Install dependencies  
-   `npm install` (in both `/client` and `/server`)
-3. Create `.env` files for client and server
-4. Run server  
-   `npm run dev` (in `/server`)
-5. Run client  
-   `npm run dev` (in `/client`)
+## 🚩 Core Features  
+- Secure user authentication with role-based access (admin, donor, volunteer)  
+- Donor search by district, upazila, and blood group filters  
+- Blood donation requests with hospital and date details  
+- Stripe integration for fund donations (test mode)  
+- Donors’ dashboard to view, update, and cancel requests  
+- Admin dashboard with user management and data moderation  
+- Role management to promote users (admin-only)  
+- Interactive UI with animations and smooth transitions  
+- JWT-protected API routes for enhanced security  
+- Real-time donation status tracking (`pending`, `inprogress`, `done`)  
 
 ---
 
-> Developed with ❤️ to save lives, one drop at a time.
+## 📦 Dependencies  
+- react  
+- react-router-dom  
+- tailwindcss  
+- framer-motion  
+- axios  
+- react-toastify  
+- express  
+- mongoose  
+- jsonwebtoken  
+- stripe  
+- firebase  
 
+---
 
+## ⚙️ How to Run Locally  
 
+```bash
+# 1. Clone the repository
+git clone https://github.com/your-username/bloodcare.git
+
+# 2. Install dependencies for client and server
+cd bloodcare/client
+npm install
+
+cd ../server
+npm install
+
+# 3. Create `.env` files in both client and server directories
+#    Add necessary environment variables like API keys and database URIs
+
+# 4. Start the backend server
+cd ../server
+npm run dev
+
+# 5. Start the frontend client
+cd ../client
+npm run dev
