@@ -1,16 +1,19 @@
 import React from "react";
 import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import Logo from "../assets/BloodLogo.png";
+import { Link } from "react-router";
 
 const Footer = () => {
     return (
-        <footer className="bg-black text-white p-10 shadow-inner">
-            <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <footer className="bg-black text-white px-5 md:px-5 lg:p-10 shadow-inner py-8">
+            <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
                 {/* Logo and Description */}
                 <div>
-                    <div className="flex items-center mb-4">
-                        <img className="w-28" src={Logo} alt="Logo" />
+                    <div className="flex items-center">
+                        <Link to="/">
+                            <img className="w-36 py-1 cursor-pointer" src={Logo} alt="Logo" />
+                        </Link>
                     </div>
                     <p className="text-gray-300 leading-relaxed">
                         Your one-stop platform for saving lives through blood donation.
@@ -82,7 +85,7 @@ const Footer = () => {
                     </h3>
                     <div className="flex gap-6 text-3xl text-gray-400">
                         <a
-                            href="https://facebook.com"
+                            href="https://www.facebook.com/sd.nath.9400/"
                             aria-label="Facebook"
                             className="hover:text-red-600 transition-colors"
                         >
@@ -96,14 +99,14 @@ const Footer = () => {
                             <FaTwitter />
                         </a>
                         <a
-                            href="https://github.com"
+                            href="https://github.com/SDNATH-Git"
                             aria-label="GitHub"
                             className="hover:text-red-600 transition-colors"
                         >
                             <FaGithub />
                         </a>
                         <a
-                            href="https://linkedin.com"
+                            href="https://www.linkedin.com/in/sd-nath/"
                             aria-label="LinkedIn"
                             className="hover:text-red-600 transition-colors"
                         >
