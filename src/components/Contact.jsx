@@ -21,10 +21,10 @@ const Contact = () => {
     return (
         <div className="bg-gradient-to-t from-gray-100 via-red-200 to-white pb-6">
             <section className="my-16 px-5 md:px-5 lg:px-10">
-                <h2 className="text-3xl font-bold mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-black via-red-600 to-black">
+                <h2 className="text-2xl md:text-4xl font-bold mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-black via-red-600 to-black">
                     📩 Contact Us
                 </h2>
-                <p className="text-center text-red-400 mb-10">
+                <p className="text-center text-red-800 mb-10">
                     We’re here to answer your questions and help save lives.
                 </p>
 
