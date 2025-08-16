@@ -10,7 +10,7 @@ BloodCare is a comprehensive blood donation platform that connects donors with r
 ---
 
 ## 📷 Screenshot  
-![BloodCare Screenshot](assets/bloodWeb.png)  
+![BloodCare Screenshot](/src/assets/bloodWeb.png)  
 *(Add a clean screenshot of your app inside the `assets` folder to showcase the UI)*
 
 ---
