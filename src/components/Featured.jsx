@@ -14,9 +14,9 @@ const highDemandGroups = [
 
 const Featured = () => {
     return (
-        <section className="my-16 px-6 lg:px-20">
-            <h2 className="text-3xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-black via-red-600 to-black">
-                Featured: High Demand Blood Groups & Top Donors
+        <section className="my-20 px-5 md:px-5 lg:px-10">
+            <h2 className="text-2xl lg:text-4xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-black via-red-600 to-black">
+                Featured: High Demand Blood Groups
             </h2>
 
             {/* High Demand Blood Groups */}
@@ -39,7 +39,7 @@ const Featured = () => {
             </div>
 
             {/* Top Donors */}
-            <h3 className="text-2xl font-semibold mb-6 text-center text-red-700">
+            {/* <h3 className="text-2xl font-semibold mb-6 text-center text-red-700">
                 🩸 Top Donors
             </h3>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -60,7 +60,10 @@ const Featured = () => {
                         </button>
                     </div>
                 ))}
-            </div>
+            </div> */}
+
+
+
         </section>
     );
 };
