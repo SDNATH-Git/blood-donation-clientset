@@ -5,7 +5,7 @@
 ---
 
 ## 📋 Project Overview  
-BloodCare is a comprehensive blood donation platform that connects donors with recipients efficiently. It offers role-based access control, location-based donor search, and secure donation request management, delivering a seamless and responsive user experience.
+BloodCare is a comprehensive blood donation platform that connects donors with recipients efficiently. It offers role-based access control system, location-based donor search, and secure donation request management, delivering a seamless and responsive user experience.
 
 ---
 
