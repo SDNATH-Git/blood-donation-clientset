@@ -6,29 +6,29 @@ import { RouterProvider } from 'react-router-dom';
 import router from './Routers/Router';
 import AuthProvider from './Provider/AuthProvider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import Loading from './components/Loading';
 import { motion, AnimatePresence } from 'framer-motion';
+import Loder from './components/Loder';
 
 const queryClient = new QueryClient();
 
 function App() {
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);  // ✅ state এর নাম আলাদা
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2000);
+    const timer = setTimeout(() => setIsLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <AnimatePresence>
-      {loading ? (
+    <AnimatePresence mode="wait">
+      {isLoading ? (
         <motion.div
-          key="loading"
+          key="loader"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <Loading />
+          <Loder /> {/* ✅ এখন ঠিকভাবে কাজ করবে */}
         </motion.div>
       ) : (
         <motion.div
