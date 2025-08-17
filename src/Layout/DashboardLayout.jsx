@@ -3,6 +3,7 @@ import { useState, useContext, useEffect } from "react";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { FiUser, FiLogOut, FiList, FiDroplet, FiSettings } from "react-icons/fi";
+import { FaStreetView } from "react-icons/fa";
 import logo from "../assets/BloodLogo.png";
 import { AuthContext } from "../Provider/AuthProvider";
 import axios from "axios";
@@ -68,7 +69,7 @@ const DashboardLayout = () => {
                                 }
                                 onClick={() => setSidebarOpen(false)}
                             >
-                                <FiUser size={20} />
+                                <FaStreetView size={20} />
                                 Overview
                             </NavLink>
                         </li>
@@ -198,6 +199,7 @@ const DashboardLayout = () => {
                     <FiLogOut size={20} />
                     Logout
                 </button>
+
             </aside>
 
             {/* ✅ Main Content */}

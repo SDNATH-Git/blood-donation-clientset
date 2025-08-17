@@ -76,7 +76,7 @@ const AllUsers = () => {
     }
 
     return (
-        <div className="p-6">
+        <div className=" ">
             <h2 className="text-2xl font-bold text-red-600 mb-6">All Users</h2>
 
             {/* Filter Buttons */}
