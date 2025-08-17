@@ -2,6 +2,7 @@ import React from "react";
 import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import Logo from "../assets/BloodLogo.png";
 import { Link } from "react-router";
+import { Link as ScrollLink } from "react-scroll";
 
 
 const Footer = () => {
@@ -12,10 +13,17 @@ const Footer = () => {
                 {/* Logo and Description */}
                 <div>
                     <div className="flex items-center">
-                        <Link to="/">
-                            <img className="w-36 py-1 cursor-pointer" src={Logo} alt="Logo" />
-                        </Link>
+                        <ScrollLink
+                            to="home"
+                            smooth={true}
+                            duration={500}
+                            offset={-80}
+                            className="cursor-pointer"
+                        >
+                            <img className="w-36 py-1" src={Logo} alt="Logo" />
+                        </ScrollLink>
                     </div>
+
                     <p className="text-gray-300 leading-relaxed">
                         Your one-stop platform for saving lives through blood donation.
                     </p>

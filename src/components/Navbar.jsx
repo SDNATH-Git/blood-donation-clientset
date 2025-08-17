@@ -4,6 +4,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import Logo from "../assets/BloodLogo.png";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
+import { Link as ScrollLink } from "react-scroll";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -69,9 +70,15 @@ const Navbar = () => {
             <div className="container px-4 md:px-4 lg:px-8 flex items-center justify-between ">
                 {/* Logo */}
                 <div className="flex items-center">
-                    <Link to="/">
-                        <img className="w-36 py-1 cursor-pointer" src={Logo} alt="Logo" />
-                    </Link>
+                    <ScrollLink
+                        to="home"
+                        smooth={true}
+                        duration={500}
+                        offset={-80}
+                        className="cursor-pointer"
+                    >
+                        <img className="w-36 py-1" src={Logo} alt="Logo" />
+                    </ScrollLink>
                 </div>
 
                 {/* Desktop Nav */}
