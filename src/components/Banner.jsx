@@ -5,7 +5,7 @@ import bloodAnimation from "../assets/BloodDonation.json";
 
 const Banner = () => {
     return (
-        <div className="relative overflow-hidden   mx-auto p-5 md:p-5 lg:p-10 bg-gradient-to-b from-red-100 via-red-200 to-white flex flex-col lg:flex-row items-center gap-10">
+        <div id="banner" className="relative overflow-hidden   mx-auto p-5 md:p-5 lg:p-10 bg-gradient-to-b from-red-100 via-red-200 to-white flex flex-col lg:flex-row items-center gap-10">
 
             {/* Background animated circles */}
             <div className="absolute -top-32 -left-32 w-96 h-96 bg-red-300 rounded-full opacity-30 animate-pulse mix-blend-multiply"></div>

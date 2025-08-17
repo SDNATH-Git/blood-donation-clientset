@@ -3,6 +3,7 @@ import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import Logo from "../assets/BloodLogo.png";
 import { Link } from "react-router";
 
+
 const Footer = () => {
     return (
         <footer className="bg-black text-white px-5 md:px-5 lg:p-10 shadow-inner py-8">

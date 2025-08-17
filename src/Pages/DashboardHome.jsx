@@ -19,7 +19,7 @@ const DashboardHome = () => {
     };
 
     return (
-        <div className="p-4 sm:p-6 bg-gray-50 mb-4">
+        <div className=" bg-gray-50 mb-4">
             <div className="max-w-5xl mx-auto bg-white rounded-xl p-4 sm:p-6 md:p-8 border border-red-100 shadow-md">
                 {/* Top Section: Title & Animation */}
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6 ">

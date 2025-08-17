@@ -25,6 +25,8 @@ import AddBlog from "../Pages/AdminDashboard/AddBlog";
 import VolunteerRequests from "../Pages/VolunteerDashboard/VolunteerRequests";
 import BlogDetails from "../Pages/NavbarPage/BlogDetails";
 import EditBlog from "../Pages/AdminDashboard/EditBlog";
+import Banner from "../components/Banner";
+import Overview from "../Pages/Overview";
 
 
 const router = createBrowserRouter([
@@ -91,6 +93,7 @@ const router = createBrowserRouter([
                 element: <DynamicDashboardHome />,
             },
             { path: "profile", element: <Profile /> },
+            { path: "overview", element: <Overview /> },
             { path: "my-donation-requests", element: <MyDonationRequests /> },
             { path: "create-donation-request", element: <CreateDonationRequest /> },
             { path: "requests/edit/:id", element: <EditRequest /> },

@@ -59,6 +59,19 @@ const DashboardLayout = () => {
                     </Link>
 
                     <ul className="space-y-5 font-medium">
+                        {/* ✅ Common: Dashboard overview */}
+                        <li>
+                            <NavLink
+                                to="/dashboard/overview"
+                                className={({ isActive }) =>
+                                    `flex items-center gap-2 px-2 py-1 hover:text-red-700 transition ${isActive ? activeClass : "text-gray-700"}`
+                                }
+                                onClick={() => setSidebarOpen(false)}
+                            >
+                                <FiUser size={20} />
+                                Overview
+                            </NavLink>
+                        </li>
                         {/* ✅ Common: Profile */}
                         <li>
                             <NavLink
